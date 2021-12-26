@@ -20,6 +20,7 @@ A fully RESTful server implementation for CodeIgniter using JWT for Authenticati
 
 - Please enable extension_dir to your PHP Path Extenstion -> https://stackoverflow.com/a/1808475
 - Enable some extenstion, **curl,intl,mbstring,mysqli,openssl**
+- Enable **openssl.cafile** with File at here -> https://curl.se/docs/caextract.html
 - Run ```composer update```
 
 ## Refference
