@@ -16,6 +16,12 @@ A fully RESTful server implementation for CodeIgniter using JWT for Authenticati
 
 	Authentication: Bearer "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjIiLCJ1c2VybmFtZSI6ImRvZGk"
 
+## For Laragon User (Windows)
+
+- Please enable extension_dir to your PHP Path Extenstion -> https://stackoverflow.com/a/1808475
+- Enable some extenstion, **curl,intl,mbstring,mysqli,openssl**
+- Run ```composer update```
+
 ## Refference
 
 This project Using REST by Phil Sturgeon and Firebase/PHP-JWT.
