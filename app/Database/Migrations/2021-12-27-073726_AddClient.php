@@ -36,7 +36,10 @@ class AddClient extends Migration
                 'type' => 'datetime',
                 'null' => true,
             ],
-        'created_at datetime default current_timestamp',
+            'created_at' => [
+                'type' => 'datetime',
+                'null' => true,
+            ],
         ]);
         $this->forge->addPrimaryKey('id');
         $this->forge->createTable('client');
