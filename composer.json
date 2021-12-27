@@ -2,6 +2,13 @@
     "name": "codeigniter4/appstarter",
     "type": "project",
     "description": "CodeIgniter4 starter app",
+    "repositories": [
+        {
+            "packagist": false,
+            "type": "vcs",
+            "url": "https://github.com/mdestafadilah/ci-rest-jwt.git"           
+        }
+    ],
     "homepage": "https://codeigniter.com",
     "license": "MIT",
     "require": {
