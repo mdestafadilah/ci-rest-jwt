@@ -3,6 +3,7 @@
 A fully RESTful server implementation for CodeIgniter using JWT for Authentication
 ## Notes
 
+- Required php ^7.4 || ^8.0
 - Import Database from /db/rest_jwt.db
 - Test it with postman/insomnia
 - Create post method from postman for user authentication "http://localhost/ci-rest-jwt/api/auth/login"
