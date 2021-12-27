@@ -9,6 +9,10 @@ use CodeIgniter\HTTP\RequestInterface;
 use CodeIgniter\HTTP\ResponseInterface;
 use Psr\Log\LoggerInterface;
 
+use CodeIgniter\RESTful\ResourceController;
+use Exception;
+use \Firebase\JWT\JWT;
+
 /**
  * Class BaseController
  *
