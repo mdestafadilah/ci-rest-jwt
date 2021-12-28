@@ -1,19 +1,38 @@
 # CodeIgniter Rest Server With JWT Authentication
 
-A fully RESTful server implementation for CodeIgniter using JWT for Authentication
+A fully RESTful server implementation for CodeIgniter 4 using JWT for Authentication
 ## Notes
 
 - Required php ^7.4 || ^8.0
 - Import Database from /db/rest_jwt.db
 - Test it with postman/insomnia
 - Start Development Process with ```$ php spark serve```
-- Create post method from postman for user authentication "http://localhost:8080/api/auth/login"
-- Add this to body multipart form :
+- Create post method from postman for user authentication "http://localhost:8080/auth/register"
+- Add this to body multipart/ form-data form (for example only):
 	
-	username = dodi
-	
-	password = dodi123
+	> username = desta
+	>
+	> password = topidesta
+	>
+	> email = desta@rsuppersahabatan.co.id
+
 - If your authentication success you will get generated token response
+
+```json
+{
+    "message": "Authentikasi user Berhasil!",
+    "users": {
+        "id": "7",
+        "username": "fadilah",
+        "level": "0",
+        "email": "desta@rsuppersahabatan.co.id",
+        "updated_at": null,
+        "created_at": "2021-12-28 11:51:17"
+    },
+    "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6ImRlc3RhQHJzdXBwZXJzYWhhYmF0YW4uY28uaWQiLCJpYXQiOjE2NDA2NjcwNzYsImV4cCI6MTY0MDY2NzA3Nn0.d-CNLV43q7wyIlxi32Hs9hbodPHJe_55P6Z_DBPfsRA"
+}
+```
+
 - To test it, go Create post method from postman "http://localhost:8080/api/main/test" and then you can attach that generated token you've got to the header authentication bearer token. see example bellow :
 
 	Authentication: Bearer "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjIiLCJ1c2VybmFtZSI6ImRvZGk"
@@ -24,6 +43,12 @@ A fully RESTful server implementation for CodeIgniter using JWT for Authenticati
 - Enable some extenstion, **curl,intl,mbstring,mysqli,openssl**
 - Enable **openssl.cafile** with File at here -> https://curl.se/docs/caextract.html
 - Run ```composer update```
+
+## Limitation of Application
+
+This App is just for my Fun learning Codeigniter 4. If you need more advance with more secure feature of Codeigniter 4 power, follow this code below, i'm sure you will be more exited.
+
+> https://github.com/gunantos/ci4restfull-starter
 
 ## Refference
 
