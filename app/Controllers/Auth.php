@@ -71,6 +71,9 @@ class Auth extends BaseController
         string $emailAddress,
         int $responseCode = ResponseInterface::HTTP_OK
     ){
+
+        var_dump($emailAddress); exit();
+
         try {
             $model = new UsersModel();
             $user = $model->findUserByEmailAddress($emailAddress);
