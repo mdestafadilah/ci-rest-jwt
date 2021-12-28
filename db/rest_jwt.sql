@@ -31,7 +31,7 @@ CREATE TABLE `users` (
   `updated_at` datetime DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -40,8 +40,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (3,'desta','desta',0,NULL,NULL,NULL),(4,'desta','fadilah',0,NULL,NULL,NULL);
-/*!40000 ALTER TABLE `users` ENABLE KEYS */;
+INSERT INTO umami.users (username,password,`level`,email,updated_at,created_at) VALUES ('fadilah','$2y$10$Fq/Zg3ABQ5Jy35jOIPZSTefjFwbGHW4LI7Ucl9mmMkA.YrRvNRT8W',0,'desta@rsuppersahabatan.co.id',NULL,'2021-12-28 11:51:17');/*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -68,12 +67,31 @@ CREATE TABLE `client` (
 -- Dumping data for table `client`
 --
 
+
 LOCK TABLES `client` WRITE;
 /*!40000 ALTER TABLE `client` DISABLE KEYS */;
 INSERT INTO `client` VALUES (11,'Madelynn Bernhard','dangelo.fadel@farrell.org',84513403,NULL,'2021-12-27 08:01:43'),(12,'Terrill Bradtke','witting.pablo@hotmail.com',68068352,NULL,'2021-12-27 08:01:43'),(13,'Dr. Gage Koss V','savannah10@cronin.com',88581980,NULL,'2021-12-27 08:01:43'),(14,'Prof. Diamond Gerhold','pschultz@hettinger.info',42856456,NULL,'2021-12-27 08:01:43'),(15,'Coralie Kuphal','treva55@gmail.com',65414965,NULL,'2021-12-27 08:01:43'),(16,'Adrien Conn Sr.','jadyn.rodriguez@shanahan.com',60442835,NULL,'2021-12-27 08:01:43'),(17,'Sidney Altenwerth','whoeger@hotmail.com',64685576,NULL,'2021-12-27 08:01:43'),(18,'Kennedi Homenick','flavie.jacobi@yahoo.com',34725112,NULL,'2021-12-27 08:01:43'),(19,'Cristobal Witting','wilderman.vivien@yahoo.com',18547109,NULL,'2021-12-27 08:01:43'),(20,'Dr. Myrl Wilderman V','bsimonis@turcotte.info',65101415,NULL,'2021-12-27 08:01:43');
 /*!40000 ALTER TABLE `client` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+--
+-- Table structure for table `migrations`
+--
+
+-- umami.migrations definition
+
+CREATE TABLE `migrations` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `version` varchar(255) NOT NULL,
+  `class` varchar(255) NOT NULL,
+  `group` varchar(255) NOT NULL,
+  `namespace` varchar(255) NOT NULL,
+  `time` int(11) NOT NULL,
+  `batch` int(11) unsigned NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
