@@ -27,6 +27,8 @@ $paths = new Config\Paths();
 $bootstrap = rtrim($paths->systemDirectory, '\\/ ') . DIRECTORY_SEPARATOR . 'bootstrap.php';
 $app       = require realpath($bootstrap) ?: $bootstrap;
 
+$useKint = true;
+
 /*
  *---------------------------------------------------------------
  * LAUNCH THE APPLICATION

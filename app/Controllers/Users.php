@@ -90,7 +90,7 @@ class Users extends ResourceController
             return $this->respondCreated($res);
 
         } else {
-            $usersModel = new UserModel();
+            $usersModel = new UsersModel();
 
             $userData = $usersModel->where("username", $this->request->getVar("username"))->first();
 
