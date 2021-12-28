@@ -77,7 +77,7 @@ class BaseController extends Controller
         return $input;
     }
 
-    public function validateRequest($input, array $rules, array $message = [])
+    public function validateRequest($input, array $rules, array $messages = [])
     {
         $this->validator = Services::Validation()->setRules($rules);
 
