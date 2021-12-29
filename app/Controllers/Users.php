@@ -14,11 +14,16 @@ class Users extends ResourceController
         $rules = [
             "username" => "required",
             "password" => "required",
+            "email" => "required|valid_email|is_unique[users.email]|min_length[6]",
         ];
 
         $messages = [
             "username" => [
                 "required" => "UserName is required"
+            ],
+            "email" => [
+                "required" => "Email required",
+                "valid_email" => "Email address is not in format"
             ],
             "password" => [
                 "required" => "password is required"
@@ -37,6 +42,7 @@ class Users extends ResourceController
 
             $data = [
                 "username" => $this->request->getVar("username"),
+                "email" => $this->request->getVar("email"),
                 "password" => $this->request->getVar("password")
             ];
 
@@ -67,13 +73,14 @@ class Users extends ResourceController
     public function login()
     {
         $rules = [
-            "username" => "required",
+            "email" => "required|valid_email|min_length[6]",
             "password" => "required",
         ];
 
         $messages = [
-            "username" => [
-                "required" => "Username required",
+            "email" => [
+                "required" => "Email required",
+                "valid_email" => "Email address is not in format"
             ],
             "password" => [
                 "required" => "password is required"
@@ -92,10 +99,10 @@ class Users extends ResourceController
         } else {
             $usersModel = new UsersModel();
 
-            $userData = $usersModel->where("username", $this->request->getVar("username"))->first();
+            $userData = $usersModel->where("email", $this->request->getVar("email"))->first();
 
             if (!empty($userData)) {
-                if (password_verify($this->request->getVar("password"), $userdata['password'])) {
+                if (password_verify($this->request->getVar("password"), $userData['password'])) {
 
                     $key = $this->getKey();
 
@@ -151,77 +158,34 @@ class Users extends ResourceController
 
     public function details()
     {
-        #TODO:
+        $key = $this->getKey();
+        $authHeader = $this->request->getHeader("Authorization");
+        $authHeader = $authHeader->getValue();
+        $token = $authHeader;
+
+        try {
+            $decode = JWT::decode($token, $key, array('HS256'));
+
+            if ($decode) {
+                $response = [
+                    'status' => 200,
+                    'error' => false,
+                    'messages' => 'User Details',
+                    'data' => [
+                        'profile' => $decode
+                    ]
+                ];
+                return $this->respondCreated($response);
+            }
+        } catch (Exception $e) {
+            $response = [
+                'status' => 401,
+                'error' => true,
+                'messages' => 'Access Dilarang',
+                'data' => []
+            ];
+            return $this->respondCreated($response);
+        }
     }
 
-
-    /**
-     * Return an array of resource objects, themselves in array format
-     *
-     * @return mixed
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Return the properties of a resource object
-     *
-     * @return mixed
-     */
-    public function show($id = null)
-    {
-        //
-    }
-
-    /**
-     * Return a new resource object, with default properties
-     *
-     * @return mixed
-     */
-    public function new()
-    {
-        //
-    }
-
-    /**
-     * Create a new resource object, from "posted" parameters
-     *
-     * @return mixed
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Return the editable properties of a resource object
-     *
-     * @return mixed
-     */
-    public function edit($id = null)
-    {
-        //
-    }
-
-    /**
-     * Add or update a model resource, from "posted" properties
-     *
-     * @return mixed
-     */
-    public function update($id = null)
-    {
-        //
-    }
-
-    /**
-     * Delete the designated resource object from the model
-     *
-     * @return mixed
-     */
-    public function delete($id = null)
-    {
-        //
-    }
 }
