@@ -10,15 +10,15 @@ A fully RESTful server implementation for CodeIgniter 4 using JWT for Authentica
 - Create post method from postman for user authentication "http://localhost:8080/auth/register"
 - Add this to body multipart/ form-data form (for example only):
 	
-	> username = desta
-	>
-	> password = topidesta
-	>
-	> email = desta@rsuppersahabatan.co.id
+> username = desta
+> 
+> password = topidesta
+> 
+> email = desta@rsuppersahabatan.co.id
 
-- Create .env file with Secret Key
+- Create .env file with JWT Secret Key
 
-```json
+```bash
 #JWT_SECRET_KEY key is the secret key used by the application to sign JWTS. Pick a stronger one for production.
 JWT_SECRET_KEY=kzUf4sxss4AeG5uHkNZAqT1Nyi1zVfpz 
 #JWT_TIME_TO_LIVE indicates the validity period of a signed JWT (in milliseconds)
